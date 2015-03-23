@@ -1,5 +1,4 @@
 
-
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -44,9 +43,13 @@ public class KDTree {
 	String key1Name;
 	String key2Name;
 	int max = 3;
-	int columnNumberOfKey1 = 0; // to be reassigned
-	int columnNumberOfKey2 = 0; // to be reassigned
-	Table table; // Do not forget to assign it. It is an instance of class Table
+	int columnNumberOfKey1 = 0; // assign it to the column number of key one(the
+								// Table has a hashtable of columns, this
+								// variable
+								// is the index of the column that we build the
+								// index on )
+	int columnNumberOfKey2 = 0; // like the previous variable
+	Table table; // assign it to the table you build the kd on
 
 	public KDTree(int maxPerBucket) {
 		key1Name = "";
@@ -87,7 +90,6 @@ public class KDTree {
 				}
 				level = 1 - level;
 			}
-			// remember to check on number of values per bucket
 
 			if (cmp >= 0) {
 				if (parent.leftBucket == null) {
@@ -209,6 +211,7 @@ public class KDTree {
 		}
 	}
 
+	// get the average value in the bucket to be the new key
 	public String getAvg(ArrayList<String> a, int keyNumber) {
 		String avg = "";
 		String[] toBeSorted = new String[a.size()];
@@ -229,6 +232,9 @@ public class KDTree {
 		return avg;
 	}
 
+	// The bucket stores references to the records, so we need to get the record
+	// to compare them to redistribute the records in new buckets after
+	// resizing occurs
 	public ArrayList<String> loadAllValuesInBucket(Bucket b) {
 		ArrayList<String> result = new ArrayList<String>();
 		ArrayList<String> valInBucket = b.values;
@@ -239,7 +245,7 @@ public class KDTree {
 			String recordNumber = pos[2];
 			// load The page to get the record and add it to the result
 			Page p = this.table.pages.get(Integer.parseInt(pageNumber));
-			String [] r = p.content[Integer.parseInt(recordNumber)];
+			String[] r = p.content[Integer.parseInt(recordNumber)];
 			String r1 = "";
 			for (int i = 0; i < r.length; i++) {
 				r1 += r[i] + ",";
