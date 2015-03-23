@@ -1,7 +1,11 @@
 # KDTree
 This is implementation of KDTree in java. This is for a university project.
-
 It does not include delete method till now. I may add it later.
+
+Take care that It includes some instance variables of classes that you may not include in your project.
+For example: we include class Table with linkedlist of class Page which has 2d array of Strings.
+so please read the code carefully.
+
 ==================================================================================
 The MIT License (MIT)
 

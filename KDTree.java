@@ -46,7 +46,7 @@ public class KDTree {
 	int max = 3;
 	int columnNumberOfKey1 = 0; // to be reassigned
 	int columnNumberOfKey2 = 0; // to be reassigned
-	Table table;
+	Table table; // Do not forget to assign it. It is an instance of class Table
 
 	public KDTree(int maxPerBucket) {
 		key1Name = "";
